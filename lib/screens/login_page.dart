@@ -18,6 +18,12 @@ class _LoginPageState extends State<LoginPage> {
      * 
      * if isSignIn = true => openHome(displayName)
      */
+
+    bool isSuccess = await authProvider.handleGoogleSignIn();
+    String displayName = await authProvider.getUserDisplayName();
+    if (isSuccess) {
+      openHome(displayName);
+    } 
   }
 
   Future<bool> onBackPress() {
@@ -85,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               height: double.infinity,
               width: double.infinity,
-              color: Colors.amber,
+              color: Colors.blue[100],
             ),
             SizedBox(
               height: double.infinity,

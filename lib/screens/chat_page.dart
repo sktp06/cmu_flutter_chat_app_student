@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/color_constants.dart';
 import '../models/chat_messages.dart';
+import '../models/chat_user.dart';
 import '../providers/auth_provider.dart';
 import '../providers/chat_provider.dart';
 import 'login_page.dart';
@@ -200,6 +201,9 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget buildItem(int index, DocumentSnapshot? documentSnapshot) {
+    ChatUser chatUser = ChatUser.fromDocument(documentSnapshot!);
+  
+
     if (documentSnapshot != null) {
       ChatMessages chatMessages = ChatMessages.fromDocument(documentSnapshot);
       if (chatMessages.idFrom == currentUserId) {
@@ -226,7 +230,7 @@ class _ChatPageState extends State<ChatPage> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.network(
-                          '',
+                          widget.userAvatar,
                           width: 40,
                           height: 40,
                           fit: BoxFit.cover,
@@ -280,7 +284,7 @@ class _ChatPageState extends State<ChatPage> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.network(
-                          '',
+                          widget.peerAvatar,
                           width: 40,
                           height: 40,
                           fit: BoxFit.cover,

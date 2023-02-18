@@ -222,8 +222,14 @@ class _ChatListPageState extends State<ChatListPage> {
                                                                     .photoURL!,
                                                           )));
                                             },
-                                            child: Center(
-                                                child: Text('Index $index')),
+                            
+                                            child: Row(
+                                                children:[Image.network(
+                                                    userChat.photoUrl,
+                                                    width: 40,
+                                                    height: 40,
+                                                    fit: BoxFit.cover),Text(userChat.displayName)] ),
+                                              
                                           );
                                         });
                                   } else {
